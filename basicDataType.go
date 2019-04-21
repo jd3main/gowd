@@ -10,10 +10,9 @@ import (
 )
 
 
-// "String" corresponds to the basic data type "string"
-type String = string
+// basic data type "string" is simply same as string in go
 
-// "Interger" corresponds to the basic data type "integer"
+// Interger corresponds to the basic data type "integer"
 type Integer struct {
     big.Int
 }
@@ -31,7 +30,7 @@ func (x *Integer) SetString(s string) bool {
 }
 
 
-// "Unsigned" corresponds to the basic data type "nonNegativeInteger"
+// Unsigned corresponds to the basic data type "nonNegativeInteger"
 type Unsigned Integer
 
 func NewUnsigned(i uint64) (x *Unsigned) {
@@ -64,7 +63,7 @@ func (x *Unsigned) SetString(s string) bool {
 }
 
 
-// "Decimal" corresponds to the basic data type "decimal"
+// Decimal corresponds to the basic data type "decimal"
 type Decimal struct {
     big.Float
 }
