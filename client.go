@@ -1,23 +1,17 @@
 package gowd
 
 import (
-    "net/http"
+	"net/http"
 )
 
-const (
-    wdapi_url       = "https://www.wikidata.org/w/api.php"
-    entitydata_url  = "https://www.wikidata.org/wiki/Special:EntityData"
-)
-
-
-// Client with single connection to access Wikidata's API
+// Client is a wrapper of http.Client with some extra configurations for accessing Wikidata's APIs
 type Client struct {
-    // embedded http.Client 
-    http.Client
+	// embedded http.Client
+	http.Client
 
-    // AcceptFormat specified the prefered format to accept from wikidata
-    AcceptFormat    string
+	// AcceptFormat specified the prefered format to accept from Wikidata
+	AcceptFormat string
 
-    // Languages is a list of prefered langauges
-    Languages    []string
+	// Languages is a list of prefered langauges
+	Languages []string
 }

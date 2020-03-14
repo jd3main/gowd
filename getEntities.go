@@ -1,31 +1,22 @@
 package gowd
 
 import (
-	"io"
 	"net/url"
 	"strings"
 )
 
-func (client *Client) GetEntities(ids []string) (io.ReadCloser, string, error) {
+// GetEntities constructs parameters for getting contents of entities with given id
+func GetEntities(ids []string) Parameters {
 	parameters := url.Values{}
-	parameters.Set("action","wbgetentities");
-	parameters.Set("format",client.AcceptFormat);
-	parameters.Set("ids", strings.Join(ids,"|"));
-
-	url := wdapi_url+"?"+parameters.Encode()
-	resp, err := client.Get(url)
-	
-	return resp.Body, url, err
+	parameters.Set("action", "wbgetentities")
+	parameters.Set("ids", strings.Join(ids, "|"))
+	return parameters
 }
 
-func (client *Client) GetClaims(ids []string) (io.ReadCloser, string, error) {
+// GetClaims constructs parameters for getting claims of items with given id
+func GetClaims(ids []string) Parameters {
 	parameters := url.Values{}
-	parameters.Set("action","wbgetclaims");
-	parameters.Set("format",client.AcceptFormat);
-	parameters.Set("ids", strings.Join(ids,"|"));
-
-	url := wdapi_url+"?"+parameters.Encode()
-	resp, err := client.Get(url)
-	
-	return resp.Body, url, err
+	parameters.Set("action", "wbgetclaims")
+	parameters.Set("ids", strings.Join(ids, "|"))
+	return parameters
 }
